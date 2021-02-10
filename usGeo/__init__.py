@@ -8,3 +8,4 @@ from .usZips import *
 from .usCounties import *
 from .usStates import *
 from .usStatesPoly import *
+from .usClosestZips import *

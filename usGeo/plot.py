@@ -13,6 +13,7 @@ def randomColor():
 def plotStatesPoly(
 	fig:		"Based matplotlib figure object" = None,
 	ax:			"Based matplotlib ax object" = None,
+	size:		"Size of figure" = 1,
 	states: 	"States that going to be plotted" = [],
 	color:		"Color of state boundary \
 				 1) String 'Random', or \
@@ -53,8 +54,8 @@ def plotStatesPoly(
 		else:
 			xSpan = 20 * ((xMax - xMin) / (yMax - yMin))
 			ySpan = 20
-		fig.set_figheight(ySpan)
-		fig.set_figwidth(xSpan)
+		fig.set_figheight(ySpan * size)
+		fig.set_figwidth(xSpan * size)
 		ax.set_xlim(xMin, xMax)
 		ax.set_ylim(yMin, yMax)
 
@@ -66,6 +67,8 @@ def plotStatesPoly(
 		for pt in poly:
 			lx.append(pt[1])
 			ly.append(pt[0])
+		lx.append(poly[0][1])
+		ly.append(poly[0][0])
 		if (color == 'Random'):
 			rndColor = randomColor()
 			ax.plot(lx, ly, color=rndColor)
